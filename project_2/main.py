@@ -127,6 +127,9 @@ if __name__ == "__main__":
     SSR_c = best_c["SSR"]
     second_best_SSR_c = second_best_c["SSR"]
 
+    # Calaculate standard deviations of the position estimates
+    omega_c = np.sqrt(np.diag(C_x_pos_c))  # Standard deviations of estimated parameters
+
     print("c) Full ambiguity search (±3σ):")
     print(f"--> float ambiguities: {result_c['dd_ambiguities_float']}")
     print(f"--> σ_N (std devs):    {result_c['sigma_N']}")
@@ -137,6 +140,8 @@ if __name__ == "__main__":
     print(f"--> second best N_fix_c:    {second_best_c['N_fix']}")
     print(f"--> second best SSR:   {second_best_SSR_c:.4f}")
     print(f"--> SSR ratio (2nd/1st): {result_c['ratio_SSR']}\n")
+    print("Standard Deviations of Estimated Parameters (ω):")
+    print(omega_c)
     print("Estimated Rover Station B Cartesian Coordinates (scenario c):")
     print(f"   X = {B_pos_cartesian_fixed_c[0]:.3f} m")
     print(f"   Y = {B_pos_cartesian_fixed_c[1]:.3f} m")
